@@ -1,13 +1,11 @@
-@import "tailwindcss";
-
-:root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #000;
+  color: white;
+  font-family: system-ui, sans-serif;
 }
 
 .glass {

@@ -1,21 +1,20 @@
 'use client';
-
 import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { Sparkles, Zap, Users, RefreshCw } from 'lucide-react';
+import { Sparkles, Zap, Users } from 'lucide-react';
 
 function Crystal() {
   return (
     <mesh>
-      <octahedronGeometry args={[2.2]} />
+      <octahedronGeometry args={[2]} />
       <meshStandardMaterial 
         color="#67e8f9" 
         metalness={0.9} 
         roughness={0.1} 
         emissive="#22d3ee"
-        emissiveIntensity={0.4}
+        emissiveIntensity={0.5}
       />
     </mesh>
   );
@@ -24,63 +23,52 @@ function Crystal() {
 export default function Qylaq() {
   const [balance, setBalance] = useState(12480);
   const [clarity, setClarity] = useState(98.7);
-  const [isMinting, setIsMinting] = useState(false);
 
   const contributeInsight = () => {
-    setIsMinting(true);
-    setTimeout(() => {
-      const minted = Math.floor(Math.random() * 850) + 320;
-      setBalance(b => b + minted);
-      setClarity(c => Math.min(99.98, c + (Math.random() * 0.3 + 0.08)));
-      setIsMinting(false);
-    }, 800);
+    const minted = Math.floor(Math.random() * 650) + 220;
+    setBalance(b => b + minted);
+    setClarity(c => Math.min(99.9, c + 0.15));
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      <header className="fixed top-0 w-full z-50 backdrop-blur-2xl border-b border-cyan-500/20 bg-black/80">
-        <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-cyan-500/30 py-6">
+        <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <div className="text-4xl">💎</div>
+            <span className="text-4xl">💎</span>
             <div>
-              <div className="text-4xl font-light tracking-widest">QYLAQ</div>
-              <div className="text-xs text-cyan-400">YEAR 3000</div>
+              <div className="text-3xl tracking-[4px] font-light">QYLAQ</div>
+              <div className="text-xs text-cyan-400 -mt-1">YEAR 3000</div>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="pt-28 max-w-7xl mx-auto px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-7xl font-light tracking-tighter mb-4">Crystal Clarity Economy</h1>
-          <p className="text-xl text-zinc-400">Value that refracts truth</p>
-        </div>
-
+      <div className="pt-32 pb-20 max-w-7xl mx-auto px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8">
-            <div className="relative h-[680px] rounded-3xl overflow-hidden border border-cyan-400/30 bg-black/40">
-              <Canvas camera={{ position: [0, 2, 9] }}>
-                <ambientLight intensity={0.3} />
-                <pointLight position={[5, 8, 10]} color="#67e8f9" intensity={3} />
+            <div className="relative h-[620px] rounded-3xl overflow-hidden border border-cyan-400/30 bg-zinc-950">
+              <Canvas camera={{ position: [0, 0, 8] }}>
+                <ambientLight intensity={0.4} />
+                <pointLight position={[10, 10, 10]} color="#67e8f9" intensity={2} />
                 <Crystal />
-                <Stars radius={400} depth={60} count={1200} factor={2} saturation={0} fade />
-                <OrbitControls enableZoom enableRotate autoRotate autoRotateSpeed={0.15} />
+                <Stars radius={300} depth={50} count={800} factor={3} saturation={0} fade />
+                <OrbitControls enableZoom={true} autoRotate autoRotateSpeed={0.2} />
               </Canvas>
 
-              <div className="absolute bottom-10 left-10 right-10 bg-black/80 backdrop-blur-xl border border-cyan-400/30 rounded-3xl p-8">
+              <div className="absolute bottom-8 left-8 right-8 glass rounded-3xl p-10">
                 <div className="flex justify-between items-end">
                   <div>
-                    <div className="text-xs tracking-widest text-cyan-400">BALANCE</div>
-                    <div className="text-7xl font-light tabular-nums">{balance.toLocaleString()}</div>
-                    <div className="text-cyan-300">QYL</div>
+                    <div className="text-cyan-400 text-sm tracking-widest mb-1">YOUR CLARITY BALANCE</div>
+                    <div className="text-7xl font-light tracking-tighter">{balance.toLocaleString()}</div>
+                    <div className="text-3xl text-cyan-300">QYL</div>
                   </div>
-                  <motion.button
+                  <motion.button 
                     onClick={contributeInsight}
-                    disabled={isMinting}
-                    className="px-12 py-5 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-2xl font-medium flex items-center gap-3 disabled:opacity-70"
+                    whileHover={{ scale: 1.05 }}
+                    className="px-10 py-6 bg-gradient-to-r from-cyan-400 to-purple-500 hover:from-cyan-300 hover:to-purple-400 text-black font-semibold rounded-2xl flex items-center gap-3 text-lg shadow-xl shadow-cyan-500/50"
                   >
-                    {isMinting ? <RefreshCw className="animate-spin" /> : <Sparkles />} 
-                    {isMinting ? 'MINTING...' : 'CONTRIBUTE INSIGHT'}
+                    <Sparkles className="w-6 h-6" /> CONTRIBUTE PURE INSIGHT
                   </motion.button>
                 </div>
               </div>
@@ -89,31 +77,33 @@ export default function Qylaq() {
 
           <div className="lg:col-span-4 space-y-6">
             <div className="glass rounded-3xl p-8">
-              <div className="flex gap-4 items-center mb-6">
-                <Zap className="w-10 h-10 text-cyan-400" />
+              <div className="flex items-center gap-4 mb-6">
+                <Zap className="w-9 h-9 text-cyan-400" />
                 <div>
-                  <div className="text-cyan-400">CLARITY INDEX</div>
+                  <div className="text-sm tracking-widest text-cyan-400">CLARITY INDEX</div>
                   <div className="text-6xl font-light">{clarity}</div>
                 </div>
               </div>
-              <div className="h-3 bg-white/10 rounded-full">
-                <div className="h-3 bg-cyan-400 rounded-full" style={{width: `${clarity}%`}} />
+              <div className="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                <div className="h-2.5 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full transition-all" style={{width: `${clarity}%`}} />
               </div>
             </div>
 
             <div className="glass rounded-3xl p-8">
-              <h3 className="uppercase text-xs mb-6">LIVE REFRACTIONS</h3>
-              <div className="space-y-6 text-sm">
+              <div className="uppercase text-xs tracking-widest mb-6 text-cyan-400 flex items-center gap-2">
+                <Users /> LIVE REFRACTIONS
+              </div>
+              <div className="space-y-6">
                 {[
-                  {user: "@stella_neura", action: "Resolved quantum coherence", amount: "+1240"},
-                  {user: "@echo_92", action: "Shared empathy model", amount: "+670"}
+                  {user: "@stella_neura", action: "Solved fusion alignment", amount: "+1840"},
+                  {user: "@void_sage", action: "Shared empathy protocol", amount: "+920"},
                 ].map((item, i) => (
-                  <div key={i} className="flex justify-between border-b border-white/10 pb-5 last:border-0">
+                  <div key={i} className="flex justify-between border-b border-white/10 pb-4 last:border-none">
                     <div>
                       <div className="text-cyan-300">{item.user}</div>
-                      <div className="text-xs text-white/60">{item.action}</div>
+                      <div className="text-xs opacity-70">{item.action}</div>
                     </div>
-                    <div className="text-emerald-400">{item.amount} QYL</div>
+                    <div className="text-emerald-400 font-medium">{item.amount} QYL</div>
                   </div>
                 ))}
               </div>
