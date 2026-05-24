@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.5",
+    "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
-    "@react-three/fiber": "^8.17.4",
+    "@react-three/fiber": "^8.17.10",
     "@react-three/drei": "^9.115.0",
-    "three": "^0.169.0",
-    "framer-motion": "^11.3.0",
-    "lucide-react": "^0.441.0"
+    "framer-motion": "^11.11.9",
+    "lucide-react": "^0.456.0",
+    "three": "^0.169.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -24,7 +24,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
-    "eslint-config-next": "14.2.5",
+    "eslint-config-next": "14.2.15",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

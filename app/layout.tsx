@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Qylaq — Crystal Currency of 3000',
-  description: 'The future of value is clarity.',
+  title: 'Qylaq - Crystal Currency of 3000',
+  description: 'The future of value is crystal clear',
 };
 
 export default function RootLayout({

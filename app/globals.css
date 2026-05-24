@@ -5,11 +5,10 @@
 body {
   background: #000;
   color: white;
-  font-family: system-ui, sans-serif;
 }
 
 .glass {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(103, 232, 249, 0.2);
 }
