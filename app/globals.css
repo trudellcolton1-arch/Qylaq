@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-background: #000;
-  --color-foreground: #fff;
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
-glass {
-  background: rgba(255, 255, 255, 0.05);
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.glass {
+  background: rgba(255,255,255,0.05);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(103, 232, 249, 0.2);
 }

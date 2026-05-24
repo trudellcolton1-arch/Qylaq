@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Qylaq | Crystal Currency of 3000",
-  description: "The clarity-based economy of the future",
-  icons: { icon: "/favicon.ico" },
+  title: "Qylaq - Crystal Economy of 3000",
+  description: "The currency of clarity",
 };
 
 export default function RootLayout({
@@ -13,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark`}>
       <body>{children}</body>
     </html>
   );
